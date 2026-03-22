@@ -7,110 +7,141 @@
     <title>SkitMC | Summary</title>
     <style>
         :root {
-            --bg: #050505;
+            --bg: #000000;
             --text: #ffffff;
-            --secondary: #a0a0a0;
+            --secondary: #777777;
             --border: #222222;
-            --card: #0f0f0f;
+            --card: #0a0a0a;
         }
 
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', system-ui, sans-serif;
             margin: 0;
-            line-height: 1.6;
             display: flex;
             justify-content: center;
-            padding: 50px 20px;
+            min-height: 100vh;
         }
 
-        .container { max-width: 700px; width: 100%; }
+        .container { width: 100%; max-width: 600px; padding: 60px 20px; }
 
-        /* Header / Brand */
-        header { border-bottom: 1px solid var(--border); padding-bottom: 30px; margin-bottom: 40px; }
-        .flex-header { display: flex; align-items: center; gap: 20px; }
-        .profile-img { width: 80px; height: 80px; border-radius: 15px; border: 1px solid var(--border); }
-        h1 { margin: 0; font-size: 2.2rem; letter-spacing: -1px; }
-        .motto { font-style: italic; color: var(--secondary); margin-top: 15px; font-size: 0.9rem; max-width: 500px; border-left: 2px solid #333; padding-left: 15px; }
+        /* Header */
+        header { text-align: center; margin-bottom: 40px; }
+        .logo { width: 80px; height: 80px; border-radius: 50%; border: 1px solid var(--border); margin-bottom: 15px; }
+        .motto { font-style: italic; color: var(--secondary); font-size: 0.9rem; margin: 15px 0; line-height: 1.5; }
 
-        /* Summary Content */
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
-        h2 { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; color: #555; margin-bottom: 20px; }
-        
-        .bio p { color: var(--secondary); font-size: 1rem; }
-        .bio b { color: var(--text); }
+        /* Hub Navigation Buttons */
+        .hub-nav { display: flex; gap: 10px; margin-bottom: 40px; }
+        .nav-btn {
+            flex: 1;
+            padding: 15px;
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text);
+            cursor: pointer;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: 0.3s;
+        }
+        .nav-btn.active { background: #fff; color: #000; border-color: #fff; }
+        .nav-btn:hover:not(.active) { border-color: #555; }
 
-        /* Project Cards */
-        .project-list { display: flex; flex-direction: column; gap: 10px; }
+        /* Content Sections */
+        .content-section { display: none; animation: fadeIn 0.4s ease; }
+        .content-section.active { display: block; }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* About Me Styling */
+        .bio-text { line-height: 1.8; color: var(--secondary); }
+        .bio-text b { color: #fff; }
+
+        /* Projects Styling */
         .project-card {
             background: var(--card);
             border: 1px solid var(--border);
-            padding: 15px;
-            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 15px;
+            display: block;
             text-decoration: none;
             color: var(--text);
             transition: 0.2s;
         }
-        .project-card:hover { border-color: #eee; background: #151515; }
-        .project-card span { display: block; font-size: 0.75rem; color: #555; margin-top: 5px; }
+        .project-card:hover { border-color: #fff; }
+        .project-card h3 { margin: 0 0 10px 0; font-size: 1.1rem; }
+        .project-card p { margin: 0 0 15px 0; font-size: 0.9rem; color: var(--secondary); }
+        .ip-tag { background: #fff; color: #000; padding: 4px 8px; font-size: 0.75rem; font-weight: 900; border-radius: 2px; }
 
-        .ip-box {
-            background: #fff; color: #000; padding: 10px; text-align: center; 
-            border-radius: 4px; font-weight: 800; margin-top: 10px; font-size: 0.9rem;
-        }
-
-        @media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+        footer { text-align: center; margin-top: 60px; color: #222; font-size: 0.7rem; letter-spacing: 2px; }
     </style>
 </head>
 <body>
 
 <div class="container">
     <header>
-        <div class="flex-header">
-            <img src="assets/skitxoe.png" alt="Skitxoe" class="profile-img">
-            <div>
-                <h1>SkitMC</h1>
-                <div style="color: var(--secondary)">Developer & Server Architect</div>
-            </div>
-        </div>
+        <img src="assets/skitxoe.png" alt="Skitxoe" class="logo">
+        <h1>SKITMC</h1>
         <p class="motto">"Living in the dark, watching every move. You won’t know I’m there until your heart beat is gone."</p>
     </header>
 
-    <div class="grid">
-        <div class="bio">
-            <h2>About Me</h2>
-            <p>
-                I am a <b>Developer and Coder</b> focused on the Minecraft technical scene. 
-                Whether it's system architecture or gameplay design, I build with a 
-                minimalist mindset.
-            </p>
-            <p>
-                Known online as <b>SkitMC</b>, but in-game you'll find me as <b>Skitxoe</b> or <b>Skit</b>.
-                I have a deep history in the Dupe community, notably as the former owner of <b>VoidDupes</b>.
-            </p>
-        </div>
+    <div class="hub-nav">
+        <button class="nav-btn active" onclick="showSection('about')">About Me</button>
+        <button class="nav-btn" onclick="showSection('projects')">My Projects</button>
+    </div>
 
-        <div>
-            <h2>Current Project</h2>
-            <div class="project-list">
-                <a href="https://echodupe.pages.dev/" class="project-card">
-                    <strong>EchoDupeLS</strong>
-                    <span>Full Ecosystem & Community Hub</span>
-                </a>
-                <div class="ip-box">IP: EchoDupeLS.Minehut.gg</div>
-                
-                <h2 style="margin-top: 20px;">Quick Links</h2>
-                <a href="https://discord.gg/aH2SyywD2x" class="project-card">Discord Community</a>
-                <a href="https://echodupe.github.io/Summary/" class="project-card">Documentation</a>
-            </div>
+    <div id="about" class="content-section active">
+        <div class="bio-text">
+            <p>I am a <b>Developer and Coder</b> specialized in Minecraft infrastructure and gameplay systems. My work focuses on creating seamless, minimalist technical solutions for gaming communities.</p>
+            <p>Known across Discord and GitHub as <b>SkitMC</b>, I go by <b>Skitxoe</b> or <b>Skit</b> in-game. I have a long-standing history in the Minecraft "Dupe" scene, having previously owned and managed <b>VoidDupes</b>.</p>
+            <p>I believe in high-performance coding and dark-mode aesthetics. My philosophy is simple: build something so efficient that it's felt, even if the architect remains unseen.</p>
         </div>
     </div>
 
-    <footer style="margin-top: 60px; color: #222; font-size: 0.7rem; text-align: center; letter-spacing: 1px;">
-        EST. 2024 • DESIGNED BY SKITMC
-    </footer>
+    <div id="projects" class="content-section">
+        <a href="https://echodupe.pages.dev/" class="project-card">
+            <h3>EchoDupeLS <span class="ip-tag">LIVE</span></h3>
+            <p>The primary community hub and server ecosystem. Focused on a unique dupe-based gameplay experience.</p>
+            <div style="font-size: 0.8rem; color: #fff;">IP: EchoDupeLS.Minehut.gg</div>
+        </a>
+
+        <a href="https://echodupe.github.io/Summary/" class="project-card">
+            <h3>Server Summary</h3>
+            <p>A complete documentation hub covering the rules, mechanics, and systems behind EchoDupeLS.</p>
+        </a>
+
+        <a href="https://echodupe.github.io/Games/" class="project-card">
+            <h3>Server Games</h3>
+            <p>A detailed catalog of custom game modes and features currently active on the server.</p>
+        </a>
+
+        <a href="https://discord.gg/aH2SyywD2x" class="project-card">
+            <h3>Official Discord</h3>
+            <p>The core community platform for support, announcements, and player interaction.</p>
+        </a>
+    </div>
+
+    <footer>SKITMC • VOIDDUPES LEGACY • ECHODUPELS OWNER</footer>
 </div>
+
+<script>
+    function showSection(sectionId) {
+        // Hide all sections
+        document.querySelectorAll('.content-section').forEach(section => {
+            section.classList.remove('active');
+        });
+        // Deactivate all buttons
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        
+        // Show selected section
+        document.getElementById(sectionId).classList.add('active');
+        // Activate clicked button
+        event.currentTarget.classList.add('active');
+    }
+</script>
 
 </body>
 </html>
