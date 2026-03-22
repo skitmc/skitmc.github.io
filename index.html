@@ -3,110 +3,141 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
     <link rel="icon" type="image/png" href="assets/skitxoe.png">
     
-    <title>SkitMC | Skitxoe</title>
+    <title>SkitMC | Summary</title>
     
     <style>
         :root {
             --bg: #000000;
             --text: #ffffff;
-            --card-bg: #111111;
-            --border: #333333;
+            --card: #0a0a0a;
+            --border: #222222;
             --accent: #ffffff;
         }
 
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
             margin: 0;
+            padding: 60px 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
 
-        .container {
-            width: 90%;
-            max-width: 500px;
+        .wrapper { max-width: 600px; width: 100%; }
+
+        header { text-align: center; margin-bottom: 50px; }
+        
+        .profile-img { 
+            width: 100px; 
+            height: 100px; 
+            border-radius: 50%; 
+            border: 1px solid var(--border); 
+            margin-bottom: 20px;
+            /* Shadow effect for the "Living in the dark" vibe */
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+        }
+        
+        h1 { margin: 0; font-size: 2rem; letter-spacing: 2px; text-transform: uppercase; }
+        
+        .motto {
+            font-style: italic;
+            color: #666;
+            margin: 20px auto;
+            max-width: 420px;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .section-title {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #444;
+            margin: 40px 0 15px 0;
             text-align: center;
         }
 
-        .profile-img {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            border: 2px solid var(--accent);
-            margin-bottom: 1rem;
-        }
-
-        h1 {
-            font-size: 2rem;
-            margin: 0;
+        .ip-banner {
+            background: #fff;
+            color: #000;
+            padding: 18px;
+            border-radius: 4px;
+            font-weight: 900;
+            text-align: center;
+            font-size: 1.1rem;
             letter-spacing: 1px;
+            margin-bottom: 20px;
+            border: 1px solid #fff;
+            transition: 0.3s;
+        }
+        .ip-banner:hover {
+            background: #000;
+            color: #fff;
         }
 
-        .subtitle {
-            color: #888;
-            margin-top: 5px;
-            font-size: 0.9rem;
-        }
-
-        .links {
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .link-item {
-            background: var(--card-bg);
-            color: var(--text);
-            text-decoration: none;
-            padding: 15px;
-            border-radius: 8px;
+        .grid { display: grid; gap: 10px; }
+        .card {
+            background: var(--card);
             border: 1px solid var(--border);
-            font-weight: bold;
-            transition: 0.3s ease;
+            padding: 20px;
+            text-decoration: none;
+            color: var(--text);
+            transition: 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
         }
-
-        /* Hover effect: Flip colors to White background, Black text */
-        .link-item:hover {
-            background: var(--accent);
-            color: var(--bg);
-            transform: scale(1.02);
+        .card:hover { 
+            background: #111;
+            border-color: var(--accent);
+            transform: translateY(-2px);
         }
+        .card h3 { margin: 0 0 5px 0; font-size: 1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .card p { margin: 0; font-size: 0.85rem; color: #777; }
 
         .footer {
-            margin-top: 40px;
+            margin-top: 60px;
+            text-align: center;
             font-size: 0.7rem;
-            color: #444;
+            color: #333;
             letter-spacing: 2px;
-            text-transform: uppercase;
         }
     </style>
 </head>
 <body>
+    <div class="wrapper">
+        <header>
+            <img src="assets/skitxoe.png" alt="Skitxoe Logo" class="profile-img">
+            <h1>SkitMC</h1>
+            <p class="motto">"Living in the dark, watching every move. You won’t know I’m there until your heart beat is gone."</p>
+        </header>
 
-    <div class="container">
-        <img src="assets/skitxoe.png" alt="Skitxoe" class="profile-img">
-        
-        <h1>SKITMC</h1>
-        <p class="subtitle">Developer • Coder • Skitxoe in-game</p>
+        <div class="section-title">Connect to EchoDupeLS</div>
+        <div class="ip-banner">EchoDupeLS.Minehut.gg</div>
 
-        <div class="links">
-            <a href="https://echodupe.pages.dev/" class="link-item">EchoDupeLS Main Website</a>
-            <a href="https://echodupe.github.io/Summary/" class="link-item">Server Summary</a>
-            <a href="https://echodupe.github.io/Games/" class="link-item">Server Games</a>
-            <a href="https://discord.gg/aH2SyywD2x" class="link-item">Join the Discord</a>
+        <div class="section-title">Ecosystem</div>
+        <div class="grid">
+            <a href="https://echodupe.pages.dev/" class="card">
+                <h3>Main Website</h3>
+                <p>The primary hub for the EchoDupeLS community.</p>
+            </a>
+            <a href="https://discord.gg/aH2SyywD2x" class="card">
+                <h3>Official Discord</h3>
+                <p>Join for updates, support, and community chat.</p>
+            </a>
+            <a href="https://echodupe.github.io/Summary/" class="card">
+                <h3>Server Summary</h3>
+                <p>Full breakdown of mechanics and documentation.</p>
+            </a>
+            <a href="https://echodupe.github.io/Games/" class="card">
+                <h3>Server Games</h3>
+                <p>Explore the game modes and features available.</p>
+            </a>
         </div>
 
         <div class="footer">
-            Former Owner of VoidDupes
+            SKITXOE • DEVELOPER • FORMER OWNER OF VOIDDUPES
         </div>
     </div>
-
 </body>
 </html>
