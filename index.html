@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="icon" type="image/png" href="assets/skitxoe.png">
+    
+    <title>SkitMC | Skitxoe</title>
+    
+    <style>
+        :root {
+            --bg: #000000;
+            --text: #ffffff;
+            --card-bg: #111111;
+            --border: #333333;
+            --accent: #ffffff;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            border: 2px solid var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+
+        .subtitle {
+            color: #888;
+            margin-top: 5px;
+            font-size: 0.9rem;
+        }
+
+        .links {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .link-item {
+            background: var(--card-bg);
+            color: var(--text);
+            text-decoration: none;
+            padding: 15px;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        /* Hover effect: Flip colors to White background, Black text */
+        .link-item:hover {
+            background: var(--accent);
+            color: var(--bg);
+            transform: scale(1.02);
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 0.7rem;
+            color: #444;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="assets/skitxoe.png" alt="Skitxoe" class="profile-img">
+        
+        <h1>SKITMC</h1>
+        <p class="subtitle">Developer • Coder • Skitxoe in-game</p>
+
+        <div class="links">
+            <a href="https://echodupe.pages.dev/" class="link-item">EchoDupeLS Main Website</a>
+            <a href="https://echodupe.github.io/Summary/" class="link-item">Server Summary</a>
+            <a href="https://echodupe.github.io/Games/" class="link-item">Server Games</a>
+            <a href="https://discord.gg/aH2SyywD2x" class="link-item">Join the Discord</a>
+        </div>
+
+        <div class="footer">
+            Former Owner of VoidDupes
+        </div>
+    </div>
+
+</body>
+</html>
