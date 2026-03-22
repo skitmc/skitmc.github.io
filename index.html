@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/png" href="assets/skitxoe.png">
+    
     <title>SkitMC | Summary</title>
+    
     <style>
         :root {
             --bg: #000000;
@@ -12,69 +14,65 @@
             --secondary: #777777;
             --border: #222222;
             --card: #0a0a0a;
+            --accent: #ffffff;
         }
 
         body {
             background-color: var(--bg);
             color: var(--text);
-            font-family: 'Inter', system-ui, sans-serif;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
             margin: 0;
             display: flex;
             justify-content: center;
             min-height: 100vh;
         }
 
-        .container { width: 100%; max-width: 600px; padding: 60px 20px; }
+        .container { width: 100%; max-width: 650px; padding: 60px 20px; }
 
         /* Header */
         header { text-align: center; margin-bottom: 40px; }
-        .logo { width: 80px; height: 80px; border-radius: 50%; border: 1px solid var(--border); margin-bottom: 15px; }
-        .motto { font-style: italic; color: var(--secondary); font-size: 0.9rem; margin: 15px 0; line-height: 1.5; }
+        .logo { 
+            width: 90px; height: 90px; border-radius: 50%; 
+            border: 1px solid var(--border); margin-bottom: 15px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+        }
+        h1 { margin: 0; font-size: 2.2rem; letter-spacing: 2px; text-transform: uppercase; }
+        .motto { font-style: italic; color: var(--secondary); font-size: 0.9rem; margin: 15px auto; max-width: 450px; line-height: 1.5; }
 
-        /* Hub Navigation Buttons */
+        /* Hub Navigation */
         .hub-nav { display: flex; gap: 10px; margin-bottom: 40px; }
         .nav-btn {
-            flex: 1;
-            padding: 15px;
-            background: var(--card);
-            border: 1px solid var(--border);
-            color: var(--text);
-            cursor: pointer;
-            font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            transition: 0.3s;
+            flex: 1; padding: 15px; background: var(--card); border: 1px solid var(--border);
+            color: var(--text); cursor: pointer; font-weight: 800; letter-spacing: 1px;
+            text-transform: uppercase; transition: 0.3s;
         }
         .nav-btn.active { background: #fff; color: #000; border-color: #fff; }
-        .nav-btn:hover:not(.active) { border-color: #555; }
+        .nav-btn:hover:not(.active) { border-color: #555; background: #050505; }
 
         /* Content Sections */
-        .content-section { display: none; animation: fadeIn 0.4s ease; }
+        .content-section { display: none; animation: fadeIn 0.4s ease forwards; }
         .content-section.active { display: block; }
-
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
         /* About Me Styling */
-        .bio-text { line-height: 1.8; color: var(--secondary); }
-        .bio-text b { color: #fff; }
+        .bio-content { line-height: 1.8; color: var(--secondary); font-size: 1rem; }
+        .bio-content b { color: #fff; font-weight: 600; }
+        .skills-tag { display: inline-block; border: 1px solid #333; padding: 2px 10px; font-size: 0.75rem; color: #fff; margin-top: 10px; text-transform: uppercase; }
 
         /* Projects Styling */
+        .project-grid { display: grid; gap: 15px; }
         .project-card {
-            background: var(--card);
-            border: 1px solid var(--border);
-            padding: 20px;
-            margin-bottom: 15px;
-            display: block;
-            text-decoration: none;
-            color: var(--text);
-            transition: 0.2s;
+            background: var(--card); border: 1px solid var(--border); padding: 20px;
+            text-decoration: none; color: var(--text); transition: 0.2s;
         }
-        .project-card:hover { border-color: #fff; }
-        .project-card h3 { margin: 0 0 10px 0; font-size: 1.1rem; }
-        .project-card p { margin: 0 0 15px 0; font-size: 0.9rem; color: var(--secondary); }
-        .ip-tag { background: #fff; color: #000; padding: 4px 8px; font-size: 0.75rem; font-weight: 900; border-radius: 2px; }
+        .project-card:hover { border-color: #fff; transform: translateY(-2px); }
+        .project-card h3 { margin: 0 0 8px 0; font-size: 1.1rem; text-transform: uppercase; letter-spacing: 1px; }
+        .project-card p { margin: 0 0 12px 0; font-size: 0.85rem; color: var(--secondary); line-height: 1.4; }
+        .badge { background: #fff; color: #000; padding: 3px 7px; font-size: 0.7rem; font-weight: 900; vertical-align: middle; margin-left: 5px; }
+        
+        .ip-display { font-family: monospace; color: #fff; font-size: 0.9rem; border-top: 1px solid #222; padding-top: 10px; margin-top: 10px; }
 
-        footer { text-align: center; margin-top: 60px; color: #222; font-size: 0.7rem; letter-spacing: 2px; }
+        footer { text-align: center; margin-top: 60px; color: #222; font-size: 0.7rem; letter-spacing: 2px; border-top: 1px solid #111; padding-top: 20px; }
     </style>
 </head>
 <body>
@@ -87,39 +85,52 @@
     </header>
 
     <div class="hub-nav">
-        <button class="nav-btn active" onclick="showSection('about')">About Me</button>
-        <button class="nav-btn" onclick="showSection('projects')">My Projects</button>
+        <button id="btn-about" class="nav-btn active" onclick="showSection('about')">About Me</button>
+        <button id="btn-projects" class="nav-btn" onclick="showSection('projects')">My Projects</button>
     </div>
 
     <div id="about" class="content-section active">
-        <div class="bio-text">
-            <p>I am a <b>Developer and Coder</b> specialized in Minecraft infrastructure and gameplay systems. My work focuses on creating seamless, minimalist technical solutions for gaming communities.</p>
-            <p>Known across Discord and GitHub as <b>SkitMC</b>, I go by <b>Skitxoe</b> or <b>Skit</b> in-game. I have a long-standing history in the Minecraft "Dupe" scene, having previously owned and managed <b>VoidDupes</b>.</p>
-            <p>I believe in high-performance coding and dark-mode aesthetics. My philosophy is simple: build something so efficient that it's felt, even if the architect remains unseen.</p>
+        <div class="bio-content">
+            <p>I am a <b>Developer and Coder</b> specializing in Minecraft server infrastructure and logic-based development. My primary expertise lies in creating complex <b>Skript (.SK)</b> solutions and web-based tools for gaming communities.</p>
+            
+            <p>Online, I am known as <b>SkitMC</b>. Within the Minecraft universe, I operate under the alias <b>Skitxoe</b> (or simply <b>Skit</b>). My history in the industry is deep-rooted, stemming from my time as the former owner of <b>VoidDupes</b>.</p>
+            
+            <p>Currently, I am the lead architect behind <b>EchoDupeLS</b>, where I manage both the technical systems and the competitive ecosystem, including seasonal team operations like <b>EchoZero</b>.</p>
+            
+            <div class="skills-tag">Skript</div> <div class="skills-tag">Web Dev</div> <div class="skills-tag">Community Architect</div>
         </div>
     </div>
 
     <div id="projects" class="content-section">
-        <a href="https://echodupe.pages.dev/" class="project-card">
-            <h3>EchoDupeLS <span class="ip-tag">LIVE</span></h3>
-            <p>The primary community hub and server ecosystem. Focused on a unique dupe-based gameplay experience.</p>
-            <div style="font-size: 0.8rem; color: #fff;">IP: EchoDupeLS.Minehut.gg</div>
-        </a>
+        <div class="project-grid">
+            
+            <a href="https://skitgen.pages.dev/" class="project-card">
+                <h3>SkitGen <span class="badge">TOOL</span></h3>
+                <p>A specialized Skript generator designed to streamline the creation of .SK files for Minecraft plugins.</p>
+            </a>
 
-        <a href="https://echodupe.github.io/Summary/" class="project-card">
-            <h3>Server Summary</h3>
-            <p>A complete documentation hub covering the rules, mechanics, and systems behind EchoDupeLS.</p>
-        </a>
+            <a href="https://echodupe.pages.dev/" class="project-card">
+                <h3>EchoDupeLS <span class="badge">LIVE</span></h3>
+                <p>The main website and core ecosystem for the EchoDupeLS community.</p>
+                <div class="ip-display">IP: EchoDupeLS.Minehut.gg</div>
+            </a>
 
-        <a href="https://echodupe.github.io/Games/" class="project-card">
-            <h3>Server Games</h3>
-            <p>A detailed catalog of custom game modes and features currently active on the server.</p>
-        </a>
+            <a href="https://echodupe.github.io/EchoZero/index.html" class="project-card">
+                <h3>EchoZero <span class="badge">SSN 1</span></h3>
+                <p>The official team website for Skitxoe's squad during EchoDupeLS Season 1.</p>
+            </a>
 
-        <a href="https://discord.gg/aH2SyywD2x" class="project-card">
-            <h3>Official Discord</h3>
-            <p>The core community platform for support, announcements, and player interaction.</p>
-        </a>
+            <a href="https://echodupe.github.io/Summary/" class="project-card">
+                <h3>Server Summary</h3>
+                <p>Comprehensive documentation of rules, mechanics, and server specifications.</p>
+            </a>
+
+            <a href="https://discord.gg/aH2SyywD2x" class="project-card">
+                <h3>Official Discord</h3>
+                <p>The central hub for announcements, support, and community engagement.</p>
+            </a>
+
+        </div>
     </div>
 
     <footer>SKITMC • VOIDDUPES LEGACY • ECHODUPELS OWNER</footer>
@@ -127,19 +138,16 @@
 
 <script>
     function showSection(sectionId) {
-        // Hide all sections
-        document.querySelectorAll('.content-section').forEach(section => {
-            section.classList.remove('active');
-        });
-        // Deactivate all buttons
-        document.querySelectorAll('.nav-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
+        // Hide sections
+        document.querySelectorAll('.content-section').forEach(s => s.classList.remove('active'));
+        // Deactivate buttons
+        document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
         
-        // Show selected section
+        // Show current
         document.getElementById(sectionId).classList.add('active');
-        // Activate clicked button
-        event.currentTarget.classList.add('active');
+        // Activate current button
+        if (sectionId === 'about') document.getElementById('btn-about').classList.add('active');
+        if (sectionId === 'projects') document.getElementById('btn-projects').classList.add('active');
     }
 </script>
 
