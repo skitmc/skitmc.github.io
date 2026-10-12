@@ -4,22 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirect</title>
 
-    <title>Redirecting to SkitMC...</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: radial-gradient(circle, #240000, #000 70%);
+            font-family: Arial, sans-serif;
+        }
 
-    <meta http-equiv="refresh" content="0; url=https://skitmc.pages.dev/">
+        a {
+            padding: 15px 35px;
+            color: white;
+            background: #e00000;
+            border: 1px solid #ff3333;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.2s;
+        }
 
-    <link rel="canonical" href="https://skitmc.pages.dev/">
-
-    <script>
-        window.location.replace("https://skitmc.pages.dev/");
-    </script>
+        a:hover {
+            background: #ff2020;
+            box-shadow: 0 0 25px #ff000066;
+        }
+    </style>
 </head>
 <body>
-    <p>
-        Redirecting to SkitMC...
-        <a href="https://skitmc.pages.dev/">Click here if you aren't redirected.</a>
-    </p>
+    <a href="https://skitmc.pages.dev/">Redirect →</a>
 </body>
 </html>
 ```
